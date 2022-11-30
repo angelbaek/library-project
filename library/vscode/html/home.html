@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>    
+    <!-- 폰트 어썸 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet"> 
+    <!-- 공통 css -->
+    <link rel="stylesheet" href="/css/common.css">    
+    <!-- home css -->
+    <link rel="stylesheet" href="/css/home.css">
+    <!-- 공통 js -->
+    <script src="/js/common.js"></script>    
+</head>
+<!-- 헤더 -->
+<header>
+    <div class="topHead">
+        <!-- 검색엔진 -->
+        <div class="searchBox">
+            <div class="searchBoxChildren">
+                <input type="text" class="search-txt" name="" placeholder="책 제목을 검색하세요">                
+                    <a class="search-btn" href="list.html" onclick="searchIndex()">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </a>                      
+                    <div id="profile_and_logout">
+                        <p id="user_message">로그인 필요</p>
+                    </div>
+            </div>        
+        </div>    
+        <!-- 헤더 목록 -->
+        <div class="headerLabel">
+            <div class="headerLabelChildren">
+                <li class="labelling" id="hoverHome">
+                    <a href="" onclick="login_maintain()">Home</a>
+                </li>
+                <li class="labelling" id="hoverBook" onclick="getAllBooks()">
+                    <a href="list.html">Book</a>
+                </li>
+            </div>        
+        </div>
+    </div>    
+</header>   
+<!-- 바디 -->
+<body>
+    <!-- 백그라운드 -->
+    <div id="backImage">
+        <div id="login_popup">
+            <div class="login_value"><input id="user_login_id" type="text" placeholder="id"></div>
+            <div class="login_value"><input id="user_login_pw" type="password" placeholder="password"></div>
+            <div class="login_join_button">
+                <input id="login_button" type="button" value="로그인" onclick="user_login()">
+                <input id="join_button" type="button" value="회원가입" onclick="showjoin_popup()">
+            </div>            
+        </div>
+        <!-- 회원가입 팝업 -->
+        <div class="join_popup">
+            <input id="user_id" type="text" value="" placeholder="id">
+            <input id="user_pw" type="text" value="" placeholder="password">
+            <input id="user_name" type="text" value="" placeholder="name">
+            <input id="user_email" type="text" value="" placeholder="email">
+            <div id="join_btn_parrents">
+                <input type="button" class="join_btn" value="회원가입" id="join_success" onclick="insert_user_info()">
+                <input type="button" class="join_btn" value="취소" onclick="cancel()">
+            </div>            
+        </div>
+    </div>
+</body>
+<!-- 푸터 -->
+<footer>
+    <div class="footerCopy">
+        <h1>CopyRight Baek,Jun,Woo</h1>   
+        <h2>애플리케이션 소개   |   도서가이드   |   개인정보 보호정책   |   이용약관   |  후원방법</h2>     
+    </div>
+</footer>
+<script>     
+    
+    // test();    
+    // /* 자동 로그인 */  
+    // function test(){
+    //     var check = localStorage.getItem('user_infomation_id');
+    //     console.log(check);
+    //     if(check==true){
+    //         var message = localStorage.getItem('user_infomation_id')+"님 어서오세요 "+'<i id="logout_btn" class="fa-solid fa-power-off" onclick="user_logout()"></i>';
+    //         console.log(message); 
+    //         $('#user_message').empty();
+    //         $('#user_message').append(message);       
+    //     } 
+    // };
+    
+     
+    /* 구분 */
+    function showjoin_popup(){
+        $('#login_popup').css('display','none');
+        $('.join_popup').css('display','block');
+    };
+    function cancel(){
+        $('#login_popup').css('display','block');
+        $('.join_popup').css('display', 'none');
+    };
+
+    /* 3.5초 뒤에 로그인 팝업 */
+    function show_login_popup(){
+        document.getElementById("login_popup").style.display="block";
+    };
+    self.setTimeout("show_login_popup()",100); // 초 지정
+
+    /* 유저 정보 입력 ajax */
+    function insert_user_info(){
+        var id = $('#user_id').val();
+        var pw = $('#user_pw').val();
+        var name = $('#user_name').val();
+        var email = $('#user_email').val();               
+        var jsonData = { 
+            "id" : id,
+            "pw" : pw,
+            "name" : name,
+            "email" : email            
+        }; 
+        console.log(jsonData);
+        $.ajax({        
+            url: 'http://localhost:8080/library/test',
+            type : 'POST',            
+            contentType : 'application/json',
+            dataType: 'json',
+            data : JSON.stringify(jsonData),
+            success : function(response){
+                alert(response);
+                if(response > 0){
+                    alert("사원이 등록 되었습니다.");
+                    $('.join_popup').css('display', 'none');
+                }
+            }
+        });
+    };      
+    
+</script>
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+</html>

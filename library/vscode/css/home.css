@@ -1,0 +1,109 @@
+/* 로그인창 */
+
+#login_popup{         
+    display: none;    
+    /* opacity: 0.9; */
+    transform: translate(-50%,-50%);    
+    border-radius: 10px;
+    background-color: #d4c78c;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    box-shadow: 0px 1px 0px 2px #d4bf5d;
+    border-bottom: 1px solid #d4bf5d;
+}
+
+/* #login_popup:hover{    
+    position: absolute;
+    transition: 0.3s;
+    transform: scale(1.1);
+} */
+
+#login_popup .login_value{
+    height: 20px;
+    font-size: 14px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#login_button{
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+#login_popup .login_value input{       
+    padding: 10px; 
+    height: 28px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.join_popup{    
+    padding: 10px;
+    display: none;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #d4c78c;
+    box-shadow: 0px 1px 0px 2px #a0881c;
+    border-bottom: 1px solid #a0881c;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);    
+}
+.join_popup input{     
+    margin-bottom: 10px;
+    text-align: center;
+    /* margin: auto; */
+    display: block;    
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.login_join_button input{
+    color: white;
+    border: #d4bf5d;
+    box-shadow: 0px 1px 0px 1px grey;
+    width: 80px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: black;
+}
+
+.login_join_button input:hover{
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+    border: #d4bf5d;
+    box-shadow: 0px 1px 0px 1px #a0881c;    
+    background-color: #d4bf5d;
+}
+
+.join_btn{
+    color: white;
+    border: #d4bf5d;
+    box-shadow: 0px 1px 0px 1px grey;
+    width: 80px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: black;    
+}
+
+.join_btn:hover{
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+    border: #d4bf5d;
+    box-shadow: 0px 1px 0px 1px #a0881c;    
+    background-color: #d4bf5d;
+}
+
+#join_btn_parrents input{
+    border-radius: 10px;
+    margin-top: 5px;
+    text-align: center;
+    display: inline-block;
+}

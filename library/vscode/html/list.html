@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>     
+    
+    <!-- <link rel="stylesheet" href="css/reset.css">   -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">  
+
+    <!-- font awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet"> 
+
+    <!-- daterangepicker -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <!-- 공통 css -->
+    <link rel="stylesheet" href="/css/common.css">
+    <!-- list css -->
+    <link rel="stylesheet" href="/css/list.css">   
+
+    <!-- 공통 js -->
+    <script src="/js/common.js"></script>
+    <!-- list js -->
+    <script src="/js/list.js"></script>
+    <style>     
+
+        table{
+            border-collapse: separate;
+            border-spacing: 10px 15px;
+        }
+        
+    </style>
+</head>
+<!-- Header -->
+<header>
+    <div class="topHead">
+        <!-- 검색엔진 -->
+        <div class="searchBox">
+            <div class="searchBoxChildren">
+                <!-- input 설명란 -->
+                <input type="text" class="search-txt" name="" placeholder="책 제목을 검색하세요">                
+                    <a class="search-btn" href="list.html" onclick="searchIndex()">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </a>                          
+                    <div id="profile_and_logout">
+                        <p id="user_message">로그인 필요</p>
+                    </div>
+            </div>        
+        </div>    
+        <!-- 헤더 목록 -->
+        <div class="headerLabel">
+            <div class="headerLabelChildren">
+                <li class="labelling" id="hoverHome">
+                    <a href="home.html">Home</a>
+                </li>
+                <li class="labelling" id="hoverBook" onclick="getAllBooks()">
+                    <a href="">Book</a>
+                </li>
+            </div>        
+        </div>
+    </div>    
+</header>   
+<!-- body -->
+<body>     
+    <div id="backImage">
+        <!-- 책 목록 -->
+        <!-- <div class="booksCss">                    -->
+            <table class="booksCssContent">             
+                </td>     
+                    <thead class="booksCssContentLabel">
+                        <tr>
+                            <th>고유번호</th>
+                            <th>책이름</th>
+                            <th>장르</th>
+                            <th>저자</th>
+                            <th>대여가능</th>                    
+                        </tr>
+                    </thead>                    
+                    <tbody id="book_list">         
+                         
+                    </tbody>            
+            </table>        
+        <!-- </div> -->
+    </div>        
+    <!-- 팝업창 -->
+    <div class="popUp">
+        <div class="dateViewPopUp">
+            <div id="book_name">
+            </div>
+            <div class="popupReservation">
+                <td>시작일:</td>
+                <input type="text" id="input_start_at" value="">                
+            </div>
+            <div class="reservationBtn">
+                <input type="button" value="예약하기" onclick="rental_service()">
+                <input type="button" value="취소하기" id="btnCancel" onclick="popupExit()">
+            </div>
+        </div>
+    </div>
+</body>
+<!-- footer -->
+<footer>
+    <div class="footerCopy">
+        <h1>CopyRight Baek,Jun,Woo</h1>   
+        <h2>애플리케이션 소개   |   도서가이드   |   개인정보 보호정책   |   이용약관   |  후원방법</h2>     
+    </div>
+</footer>
+<script>
+    /* 시작일 지정 set 기능 구현중... */
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if (dd < 10) {
+    dd = '0' + dd;
+    }
+
+    if (mm < 10) {
+    mm = '0' + mm;
+    } 
+
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById("input_start_at").setAttribute("min", today);    // 요까지
+         
+    function getStartAt(){
+        var start = $('#input_start_at').val();
+        console.log(start);
+        /* 지정일 set */
+        console.log(dd);
+        var imsi = dd+7;
+        console.log(imsi);
+        today = yyyy + '-' + mm + '-' + imsi;
+        document.getElementById("input_start_at").setAttribute("max", today);
+    }    
+    /* 임시 Test */
+    console.log(localStorage.getItem('user_infomation_id'))
+    console.log(localStorage.getItem('user_infomation_pw'))
+    console.log(localStorage.getItem('user_infomation_name'))
+    console.log(localStorage.getItem('user_infomation_email'))
+
+</script>
+<script>
+    function rental_service(){
+        var val = $('#user_message').val();
+        console.log(val);
+        if(val==""){
+            return;
+        }
+        var id = localStorage.getItem('user_infomation_id');
+        console.log(id);
+        var date = $('#input_start_at').val();
+        console.log(date);
+        var uniqueNumber = localStorage.getItem('uniqueNumber');
+        console.log(uniqueNumber);
+        const chars = date.split('-');
+        console.log(chars);
+        console.log(chars[0]);
+        console.log(chars[1]);
+
+        /* test */
+
+        var test = chars[0].split('/');
+        console.log("테스트중:"+test);        
+        console.log("테스트중2:"+chars[1].substr(1, 2)); // 일
+        console.log("테스트중3:"+chars[1].substr(4, 2)); // 월
+        console.log("테스트중4:"+chars[1].substr(7, 4)); // 년
+
+        var start_mm = chars[0].substr(0, 2);
+        var start_dd = chars[0].substr(3, 2);
+        var start_yy = chars[0].substr(6, 4);
+        var end_mm = chars[1].substr(1, 2);
+        var end_dd = chars[1].substr(4, 2);
+        var end_yy = chars[1].substr(7, 4);        
+        /*  */
+
+        var start_at = start_yy+'-'+start_mm+'-'+start_dd;
+        var end_at =  end_yy+'-'+end_mm+'-'+end_dd;
+        console.log(start_at);
+        console.log(end_at);
+
+        var jsonData = { 
+            "startAt" : start_at,
+            "endAt" : end_at,
+            "id" : id,
+            "uniqueNumber" : uniqueNumber            
+        }; 
+        console.log(jsonData);
+        $.ajax({        
+            url: 'http://localhost:8080/library/test/retalservice',
+            type : 'POST',            
+            contentType : 'application/json',
+            dataType: 'json',
+            data : JSON.stringify(jsonData),
+            success : function(response){
+                alert(response);
+                // Location.reload();
+            }
+        });
+    }
+    /* 자동 로그인 */
+    auto_login();
+    function auto_login(){
+        var check = localStorage.getItem('user_infomation_id');
+        console.log(check);
+        if(check==true){
+            console.log("로그인 유지 실행중...");
+            var message = localStorage.getItem('user_infomation_id')+"님 어서오세요 "+'<i id="logout_btn" class="fa-solid fa-power-off" onclick="user_logout()"></i>';
+            $('#user_message').empty();
+            $('#user_message').append(message);
+        }    else{
+            console.log("로그인 유지 실행안됨!");
+            var message = "로그인 필요";
+            $('#user_message').empty();
+            $('#user_message').append(message);
+        }
+    }
+    
+    /* 캘린더 기능 */
+    $('#input_start_at').daterangepicker({
+          singleDatePicker: true,
+          startDate: moment().subtract(6, 'days')
+    }); 
+    $( "#input_start_at" ).daterangepicker({
+            dateFormat: 'yy-mm-dd',
+            prevText: '이전 달',
+            nextText: '다음 달',
+            monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+            monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+            dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+            dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+            dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+            showMonthAfterYear: true,
+            yearSuffix: '년',
+            minDate: "-1M"
+    });  
+
+    var value = localStorage.getItem('search');
+    if(value!=""){
+        console.log(value);
+        localStorage.setItem('search', "");
+        $('#book_list').append(value);
+    }else{
+        getAllBooks();
+    }
+
+    function getAllBooks(){        
+        $.ajax({            
+            url: 'http://localhost:8080/library/test/booksAll',
+            type : 'GET',
+            dataType : 'json',
+            success : function(response){
+                $('#book_list').empty();
+                console.log(response);
+                var html = "";
+                for(var i=0; i<response.length; i++){
+                    if(response[i].use){                    
+                        html += '<tr id="libraryOne" onclick="getPopUpNew('+(response[i].uniqueNumber)+')"><td>'
+                            +response[i].uniqueNumber+'</td><td>'
+                            +response[i].name+'</td><td>'
+                            +response[i].genre+'</td><td>'
+                            +response[i].author+'</td><td>가능</td></tr>'
+                    }else{
+                        html += '<tr id="dontlibraryOne"><td>'+response[i].uniqueNumber+'</td><td>'+response[i].name+'</td><td>'+response[i].genre+'</td><td>'+response[i].author+'</td><td>불가능</td></tr>'
+                    }
+                                    
+                }
+                $('#book_list').append(html);
+            }
+        });
+    }        
+    // login_maintain();
+    /* 검색엔진 엔터기능 */
+    $(".search-txt").on('keyup', function (e) {
+        if (e.keyCode === 13) {
+            // Do something
+            searchIndex();
+        }
+    });  
+</script>
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+</html>

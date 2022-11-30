@@ -1,0 +1,145 @@
+#book_list{    
+    text-align: center;
+}
+
+.dateViewPopUp{
+    display: block;
+}
+.labelling{
+    display: inline;
+}
+
+.booksCssContent{           
+    position: fixed;     
+    display: block;
+    opacity: 0.97;   
+    background-color: #fefefe;
+    padding: 10px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 1px 1px 1px gray;
+    width: auto;     
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.booksCssContentLabel th{   
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;    
+    font-size: x-large;        
+}
+
+.booksCssContentLabel tr{
+    /* 작업하자~~~~~~~~ */    
+    margin-bottom: 20px;    
+}
+
+#book_list td{
+    font-size: 20px;    
+}
+
+.booksCssContentLabel{    
+    margin-bottom: 50px;
+}
+
+.popUp{
+    opacity: 0.97;    
+    background-color: #ece6cc;
+    box-shadow: 0px 1px 0px 2px #d4c78c;;
+    border-bottom: 1px solid #d4c78c;;
+    display: none;
+    border-radius: 25px;
+    padding-top: 2.5%;        
+    text-align: center;
+    height: 50%;
+    width: 25%;
+    color: black;    
+    left: 37.2%;
+    top: 25%;
+    position: fixed;
+}
+
+.popUp .popupReservation{
+    font-size: 20px;
+    margin-bottom: 20px;    
+}
+
+.popUp .popupReservation input{
+    font-size: 18px;
+}
+.popUp .popupReservation input:hover{
+    font-weight: bold;
+    font-weight: bold;
+    color: #363636;    
+    cursor: pointer;
+}
+
+.reservationBtn input{
+    color: white;
+    font-weight: bold;
+    /* color: white; */
+    background-color: black;
+    margin-top: 20%;
+    margin-left: 5%;
+    margin-right: 5%;
+    box-shadow: 0px 1px 0px 1px grey;
+    border: 1px;
+    border-radius: 50px;
+    font-size: 15px;
+    width: 100px;
+    height: 35px;
+}
+
+.reservationBtn input:hover{
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+    border: #d4c78c;
+    box-shadow: 0px 1px 0px 1px #a89b61; 
+    background-color: #d4c78c;    
+}
+
+#libraryOne{
+    transition: 0.3s;
+    transform:scale(1.0);
+}
+
+#libraryOne:hover{
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+    color: #dbc981;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}   
+
+#dontlibraryOne{    
+    transition: 0.3s;
+    transform:scale(1.0);
+}
+
+#dontlibraryOne:hover{
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+    color: #eb5e42;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+#backImage{        
+    /* margin-top: 120px; */
+    opacity: 0.7;    
+    width: 1920px;
+    height: 1080px;
+    background-image: url(/image/library-interior-2022-08-10-08-37-24-utc.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* 책 정보 란 css */
+#book_name{
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 100px;
+}

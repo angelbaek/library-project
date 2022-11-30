@@ -1,0 +1,191 @@
+#profile_and_logout{
+    width: 200px;
+    margin-top: 2%;
+    float: right;
+    margin-right: 50px;
+}
+
+#logout_btn{
+    color: black;
+    margin-left: 10px;
+    transition: 0.3s;
+    transform: scale(1.0);
+}
+
+#logout_btn:hover{
+    /*  */
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;    
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+    /*  */
+    color: red;
+    cursor: pointer;
+    transition: 0.3s;
+    transform: scale(1.5);
+}
+
+/* 공통 */
+*{
+    font-family: 'Nanum Gothic', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+
+
+.labelling{
+    display: inline;
+}
+
+/* 헤더 */
+.searchBox{   
+    opacity: 0.85;
+    top: 0; 
+    z-index: 3;
+    margin-bottom: 30px;    
+    padding-top: 80px;    
+    align-items: center;                
+    position: fixed;
+    background-color: #ece6cc;
+    width: 100vw;     
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 5%);
+}
+.searchBox:hover{   
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 5%);
+}
+
+.searchBox .searchBoxChildren{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.headerLabel{   
+    opacity: 0.85;
+    z-index: 10;      
+    background-color: #fff;      
+    height: auto;
+    margin-top: 150px;
+    position: fixed;        
+}
+
+.headerLabel .headerLabelChildren{   
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 5%);
+    padding: 10px;        
+    text-align: center;
+    background-color: #fafbfc;     
+    width: 100%;
+    position: fixed;
+    top: 11.2%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.search-txt{
+    margin-left: 25%;
+    margin-top: 30px;    
+    margin-bottom: 20px;
+    text-align: center;
+    width: 50%;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.topHead a{    
+    font-weight: bold;
+    color: black;
+}
+
+.headerLabel a{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.headerLabelChildren a{    
+    font-size: 25px;
+    transition: 0.3s;
+    transform:scale(1.0);  
+}
+
+.headerLabelChildren:hover{
+    box-shadow: 0px 3px 1px 3px rgb(0 0 0 / 5%);
+}
+
+.labelling:hover{        
+    transition: 0.3s;
+    transform:scale(1.1);  
+}
+
+.headerLabel a{    
+    transition: 0.3s;
+    transform:scale(1.0);  
+}
+
+.headerLabel a:hover{  
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;  
+    color: #ece6cc;
+    display: inline-block; 
+    transition: 0.12s;    
+    transform:scale(1.2);  
+}
+
+.searchBoxChildren a{
+    margin-left: 20px;
+    transition: 0.3s;
+    transform:scale(1.0);  
+}
+.searchBoxChildren a:hover{
+    display: inline-block;
+    transition: 0.3s;
+    transform:scale(2.0);  
+}
+
+/* footer */
+footer{    
+    font-size: 20px;
+    text-align: center;
+    color: black;
+}
+
+footer h1{
+    font-size: 20px;
+ margin-top: 17px;
+ margin-bottom: 10px;
+}
+
+footer h2{
+    font-size: 15px;
+}
+
+.footerCopy{    
+    opacity: 0.85;
+    position: fixed;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    background-color: #e9e4cf;
+}
+/* footer end */
+
+/* 배경이미지 */
+#backImage{    
+    overflow: hidden;
+    /* margin-top: 120px; */
+    opacity: 0.7;
+    display: flex;
+    width: 100%;
+    height: 1000px;
+    background-image: url(/image/library-interior-4-2022-08-10-08-37-24-utc.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+#user_message{
+    font-weight: bold;
+}
