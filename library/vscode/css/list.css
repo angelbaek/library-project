@@ -143,3 +143,114 @@
     font-weight: bold;
     margin-bottom: 100px;
 }
+
+#input_start_at{
+    left: 50%;
+    text-align: center;
+    display: inline-block;
+}
+
+#rental_day{
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+#rental_label_popup{
+    opacity: 0.95;
+    font-weight: bold;
+    border: 1px solid black;
+    font-size: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 20px;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 10;
+    color: black;
+    border: #d4c78c;
+    box-shadow: 0px 1px 0px 1px #a89b61; 
+    background-color: #d4c78c;    
+    position: fixed;
+}
+
+.rental_service_isuse{   
+    display: none;
+    color: #fefefe;
+    background-color: #000;
+    z-index: 10;
+    top: 50%;
+    left: 80%;
+    transform: translate(-50%,-50%);
+    position: fixed;
+}
+
+/* #test1:hover ~ #test2{
+    display: block;
+    transform: scale(1.2);
+    transition: 0.3s;
+} */
+
+#test1:hover ~ #test2{
+    transform: scale(1.2);
+    transition: 0.3s;
+    display: block;
+}
+
+#test2{
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    z-index: 10;
+    display: none;
+    position: absolute;    
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    /* border-radius: 10px; */
+    transform: translate(-50%, -50%);
+    background-color: #fefefe;
+    color: black;
+    box-shadow: 0px 1px 1px 1px grey;       
+}
+
+.dateViewPopUp #explation_baloon{
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    z-index: 10;    
+    position: absolute;    
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    /* border-radius: 10px; */
+    transform: translate(-50%, -50%);
+    background-color: #fefefe;
+    color: black;
+    box-shadow: 0px 1px 1px 1px grey; 
+    transform: scale(1.0); 
+    transition: 0.3s;
+}
+
+/* #book_name #testtttt{
+    height: auto;
+    width: auto;
+    color: white;
+    background-color: #000;
+    position: fixed; 
+} */
+
+/* #book_name:hover ~ #testtttt{
+    display: none;
+} */

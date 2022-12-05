@@ -72,7 +72,8 @@
     <div id="backImage">
         <!-- 책 목록 -->
         <!-- <div class="booksCss">                    -->
-            <table class="booksCssContent">             
+            <div id="test1">
+                <table class="booksCssContent">             
                 </td>     
                     <thead class="booksCssContentLabel">
                         <tr>
@@ -83,32 +84,48 @@
                             <th>대여가능</th>                    
                         </tr>
                     </thead>                    
-                    <tbody id="book_list">         
-                         
-                    </tbody>            
-            </table>        
+                    <tbody id="book_list">                        
+                                            
+                    </tbody>                                
+                </table>        
+            </div>           
+            <div id="test2">
+                <p><i class="fa-regular fa-hand-point-left"></i> 예약을 하려면 클릭하시오</p>
+            </div> 
         <!-- </div> -->
     </div>        
     <!-- 팝업창 -->
     <div class="popUp">
+        <div id="rental_label_popup">            
+            선택항목
+        </div>
         <div class="dateViewPopUp">
+            <!-- <div id="explation_baloon"> -->
+                <!-- asdasdsdsadsad -->
+            <!-- </div> -->
             <div id="book_name">
+                 <!-- test중 -->
             </div>
+            <!-- <div id="testtttt">asdasdsadasd</div> -->
             <div class="popupReservation">
-                <td>시작일:</td>
-                <input type="text" id="input_start_at" value="">                
+                <div id="rental_day">대여기간</div> <!-- 시작일 -->
+                <input type="text" id="input_start_at" value=""
+                style="
+                    width: 222px;
+                ">                
             </div>
             <div class="reservationBtn">
-                <input type="button" value="예약하기" onclick="rental_service()">
-                <input type="button" value="취소하기" id="btnCancel" onclick="popupExit()">
+                <input type="button" value="확인" onclick="rental_service()">
+                <input type="button" value="취소" id="btnCancel" onclick="popupExit()">
             </div>
         </div>
     </div>
+    <!-- <div class="circle"></div> -->
 </body>
 <!-- footer -->
 <footer>
     <div class="footerCopy">
-        <h1>CopyRight Baek,Jun,Woo</h1>   
+        <h1>CopyRight Baek Seung Ho</h1>   
         <h2>애플리케이션 소개   |   도서가이드   |   개인정보 보호정책   |   이용약관   |  후원방법</h2>     
     </div>
 </footer>
@@ -151,9 +168,9 @@
     function rental_service(){
         var val = $('#user_message').val();
         console.log(val);
-        if(val==""){
-            return;
-        }
+        // if(val==""){
+        //     return;
+        // }
         var id = localStorage.getItem('user_infomation_id');
         console.log(id);
         var date = $('#input_start_at').val();
@@ -200,8 +217,8 @@
             dataType: 'json',
             data : JSON.stringify(jsonData),
             success : function(response){
-                alert(response);
-                // Location.reload();
+                alert("예약 되었습니다");
+                location.reload();
             }
         });
     }
@@ -257,7 +274,7 @@
             type : 'GET',
             dataType : 'json',
             success : function(response){
-                $('#book_list').empty();
+                // $('#book_list').empty();
                 console.log(response);
                 var html = "";
                 for(var i=0; i<response.length; i++){
@@ -281,9 +298,78 @@
     $(".search-txt").on('keyup', function (e) {
         if (e.keyCode === 13) {
             // Do something
-            searchIndex();
+            searchIndex();            
         }
     });  
+
+    var box = getElementById('libraryOne');
+
+    //마우스 오버
+	box.addEventListener('mouseover',function(){
+        box.setAttribute('class','hover');
+    });
+
+    //마우스 아웃
+    box.addEventListener('mouseout',function(){
+        box.removeAttribute('class');
+    });
+
+    // $("#libraryOne").hover(function(){
+    //     $('.rental_service_isuse').css("display", "block");
+    // }, function(){
+    //     $('.rental_service_isuse').css("display", "none");
+    // });
+</script>
+<script>
+    /* 마우스 따라다니게 */
+    const target = document.querySelector("#test2");     
+    const target_popup = document.querySelector("#explation_baloon");
+    // var x = 0;
+    // var y = 0;
+    document.addEventListener("mousemove", (e) => { // mousemove이벤트를 이용해 움
+
+    // 마우스의 좌표는 clientX와 clientY를 이용해 알수 있다. -> 브라우저 window의 좌표값 위치를 전달한다.
+
+    // pageX, pageY와는 다름.
+
+    const mouseX = e.clientX;
+
+    const mouseY = e.clientY;
+
+    target.style.left = 40+mouseX + 'px';
+
+    target.style.top = mouseY-5 + 'px';
+
+    target_popup.style.left = mouseX-800 + 'px';
+
+    target_popup.style.top = mouseY-200 + 'px';
+
+    // x = mouseX-800;
+    // y = mouseY-200;
+
+    //     testtttttt();
+        
+    });
+
+    // function testtttttt(){
+    //     if(x>=-231 && x<=-12 && y>=230 && y<=253){    
+    //     console.log("딱맞네");
+    //     $('#explation_baloon').css('display','block');
+    //     $('#explation_baloon').empty();
+    //     var massage = "클릭하여 대여기간을 정하세요"
+    //     $('#explation_baloon').append(massage);
+    //     }else if(x>=-265 && x<=-25 && y>=64 && y<=95){
+    //         $('#explation_baloon').css('display','block');
+    //     $('#explation_baloon').empty();
+    //     var massage = "대여할 책 제목입니다"
+    //     $('#explation_baloon').append(massage);
+    //     }
+    //     else{            
+    //         $('#explation_baloon').css('display','none');
+    //     }
+    // }
+
+
 </script>
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 </html>

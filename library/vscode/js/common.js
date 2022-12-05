@@ -6,7 +6,8 @@ function searchIndex(){
         url: 'http://localhost:8080/library/test/'+test,
         type : 'GET',
         dataType : 'json',
-        success : function(response){                  
+        success : function(response){   
+            window.location.reload();               
             console.log(response);
             var html = "";
             for(var i=0; i<response.length; i++){
@@ -58,11 +59,10 @@ function user_login(){
         url: 'http://localhost:8080/library/test/login/'+id,
         type : 'GET',
         dataType : 'json',
-        success : function(response){
-            console.log(response);
-            console.log(response[0].pw+","+pw);                
+        success : function(response){            
+            // console.log(response[0].pw+","+pw);                
             if(pw==response[0].pw){
-                alert("어서와라");
+                alert("환영합니다");
                 var identity = response[0].id;
                 var password = response[0].pw;
                 var name = response[0].name;
@@ -78,9 +78,8 @@ function user_login(){
                 localStorage.setItem('user_infomation_email', email);   
                 console.log(localStorage.getItem('user_infomation_id')); 
             }else{
-                alert("될줄 알았냐?");                    
+                alert("등록되지 않은 회원입니다");                    
             }
-        }
-          
+        }          
     });
 }    

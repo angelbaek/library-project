@@ -37,7 +37,7 @@ body{
 .search-box:hover > .search-btn{
   background-color: #fff;
 }
-.search-txt{
+.search-txt{  
   display: flex;
   padding: 0;
   width: 0px;

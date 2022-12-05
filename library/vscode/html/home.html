@@ -16,6 +16,11 @@
     <link rel="stylesheet" href="/css/home.css">
     <!-- 공통 js -->
     <script src="/js/common.js"></script>    
+    <style>
+        .headerLabel .headerLabelChildren{   
+            top: 11.1%;
+        }
+    </style>
 </head>
 <!-- 헤더 -->
 <header>
@@ -73,7 +78,7 @@
 <!-- 푸터 -->
 <footer>
     <div class="footerCopy">
-        <h1>CopyRight Baek,Jun,Woo</h1>   
+        <h1>CopyRight Baek Seung Ho</h1>   
         <h2>애플리케이션 소개   |   도서가이드   |   개인정보 보호정책   |   이용약관   |  후원방법</h2>     
     </div>
 </footer>
@@ -128,11 +133,11 @@
             contentType : 'application/json',
             dataType: 'json',
             data : JSON.stringify(jsonData),
-            success : function(response){
-                alert(response);
+            success : function(response){                
                 if(response > 0){
-                    alert("사원이 등록 되었습니다.");
+                    alert("회원 등록 되었습니다.");
                     $('.join_popup').css('display', 'none');
+                    show_login_popup();
                 }
             }
         });
